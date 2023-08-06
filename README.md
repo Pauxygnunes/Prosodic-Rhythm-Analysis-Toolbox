@@ -1,2 +1,2 @@
 # Prosodic-Rhythm-Analysis-Toolbox
-The Prosodic Rhythm Analysis Toolbox is a set of data, scripts, and functions, devised to operate and visualize the relations between prosodic rhythm profiles, following the theories of Leonard Meyer and Fred Lerdahl. It is linked to a research in progress developed at Federal University of Rio de Janeiro.
+The Prosodic Rhythm Analysis Toolbox is a set of data, scripts, and functions devised to operate and visualize the relations between prosodic rhythm profiles inside the rhythmesh, a network made up from the set of all profiles. This research follows from the works of Leonard Meyer (1957), Cooper and Meyer (1968), and Fred Lerdahl (1983). It is linked to a research in progress developed at Federal University of Rio de Janeiro.
