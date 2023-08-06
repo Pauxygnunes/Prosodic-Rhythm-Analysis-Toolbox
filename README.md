@@ -1,2 +1,3 @@
 # Prosodic-Rhythm-Analysis-Toolbox
 The _Prosodic Rhythm Analysis Toolbox_ is a set of Matlab data, scripts, and functions devised to operate and visualize the relations between prosodic rhythm profiles inside the _rhythmesh_, a network made up of the set of all profiles. This research is based on the works of Leonard Meyer (1957), Cooper and Meyer (1968), and Fred Lerdahl (1983). It is linked to research in progress developed at the Federal University of Rio de Janeiro.
+The basic concepts and fundamentals can be checked in an article by Gentil-Nunes (2019), available at <[https://ppgm.musica.ufrj.br/formal-analysis-of-meyers-rhythmic-structures/](url)>.
