@@ -28,11 +28,12 @@ The resulting graphs show some substructures and relations that can be explored 
 |:--:| 
 | *Figure 2 - Three examples of distribution of the 296 rhythmic profiles of rhythmesh into clusters based on two relations – prefixation (a) and prolation (b) – and the operation of rotation (c). Each rhythmic profile is represented by a point in the cluster.* |
 
-|![BoiPreto_exemplo com árvores_v02](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/7f75fd54-42dd-4206-bf56-26a91bbf4e0a)|
+|![BoiPreto_exemplo com árvores_v02](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/633dfc7b-269a-4549-8165-84b57bd7ebfb)
+|
 |:--:| 
 | *Figure 3 - Boi Preto (Jongo da Serrinha, 2002): a) Score of the first phrase with lyrics; b) Rhythmic profiles notated in alphanumeric style (Gentil-Nunes, 2016, p. 159); c)  Rhythmic-formal structure presented in tree notation.* |
 
-|![Boi Preto Level 3](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/7b26cd19-0220-423b-863d-dc71d70bfb74)|
+|![Boi preto Level 3](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/6bff4640-685d-4582-8c02-9b9c71340b1a)|
 |:--:| 
 | *Figure 4 - Boi Preto (Jongo da Serrinha, 2002): a) Rhythmic profiles connected by its inclusion relations; b) Section of the rhythmesh with the location of the former rhythmic profiles indicated by circled numbers.* |
 
