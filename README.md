@@ -38,7 +38,7 @@ The resulting graphs show some substructures and relations that can be explored 
 | *Figure 4 - Boi Preto (Jongo da Serrinha, 2002): a) Rhythmic profiles connected by its inclusion relations; b) Section of the rhythmesh with the location of the former rhythmic profiles indicated by circled numbers.* |
 
 The rhythmic codes that appear in the Figures are a system of symbols devised by Gentil-Nunes in his 2019 article to translate Meyer's rhythmic structures to character types. The intention is just to simplify the exchange and transmission of this kind of information (Figure 5).
-|![Bruckner](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/82a756d5-2aaa-402d-b3ae-82f91a4b603e)|
+|![Bruckner](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/ed29a43f-c5b9-46bd-9e39-fecd18365ad0)|
 |:--:|
 | *Bruckner, Symphony No. 9 (excerpt): analysis of Meyer’s rhythmic profiles in Meyerian notation (a), numerical notation (b), and alphanumeric notation (c). Item (a) adapted from Cooper and Meyer (1963, p. 95). Items (b), and (c), original conception by the present author* |
 
