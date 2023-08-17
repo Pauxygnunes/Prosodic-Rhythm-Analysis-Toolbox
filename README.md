@@ -33,7 +33,7 @@ The resulting graphs show some substructures and relations that can be explored 
 |:--:| 
 | *Figure 3 - Boi Preto (Jongo da Serrinha, 2002): a) Score of the first phrase with lyrics; b) Rhythmic profiles notated in alphanumeric style (Gentil-Nunes, 2016, p. 159); c)  Rhythmic-formal structure presented in tree notation.* |
 
-|![Boi preto Level 3](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/6bff4640-685d-4582-8c02-9b9c71340b1a)|
+|![Boi Preto Level 3](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/ec156cea-90d3-4870-a432-3320a0b4daa6)|
 |:--:| 
 | *Figure 4 - Boi Preto (Jongo da Serrinha, 2002): a) Rhythmic profiles connected by its inclusion relations; b) Section of the rhythmesh with the location of the former rhythmic profiles indicated by circled numbers.* |
 
