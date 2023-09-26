@@ -1,5 +1,5 @@
 function findrel = findrel(code1,code2)
-% The function "findrel" returns an array with five columns that shows all
+% The function "findrel" returns an table with five columns that shows all
 % the adjacency relations between two sets of given rhythmic profiles. Each
 % line of the array contains the number of order (porder) of the first and
 % second profile, the adjacency relation between the pair, and the names of
@@ -12,16 +12,20 @@ function findrel = findrel(code1,code2)
 % Usage:
 %       findrel (first set of rhythmic profiles, by code or name, second
 %       set of rhythmic profiles, by code or name)
+% 
 % Example:
 %         findrel(['001';'010'],['00T';'100'])
-% 
+%         
 %         ans =
-% 
-%           3×5 cell array
-% 
-%             {'4'}    {'28'}    {'Ptt'}    {'001'}    {'00T'}
-%             {'4'}    {'6' }    {'R'  }    {'001'}    {'100'}
-%             {'5'}    {'6' }    {'R'  }    {'010'}    {'100'}
+%         
+%           3×5 table
+%         
+%             p1n    p2n      rel        p1         p2   
+%             ___    ___    _______    _______    _______
+%         
+%             28      4     {'Ptt'}    {'001'}    {'00T'}
+%              4      6     {'R'  }    {'001'}    {'100'}
+%              5      6     {'R'  }    {'010'}    {'100'}
 % 
 % Created in July 2023 under MATLAB 2022 (Mac OS)
 %
@@ -59,9 +63,28 @@ findrel = [];
     if isempty(findrel)
         findrel = [];
     end
-    [~,idx] = unique(strcat(findrel(:,1),findrel(:,2),findrel(:,3)));
-    findrel = findrel(idx,:)
-    findrel = [porder(findrel(:,2)), porder(findrel(:,3)), string(findrel)]
-    findrel = cellstr(findrel)
-    findrel = sortrows(findrel,3);
+[~,idx] = unique(strcat(findrel(:,1),findrel(:,2),findrel(:,3)));
+findrel = findrel(idx,:);
+findrel = [porder(findrel(:,2)), porder(findrel(:,3)), string(findrel)];
+findrel = cellstr(findrel);
+sortfindrel = [];
+    for f  = 1:size(findrel,1);
+        templine = findrel(f,:);
+        newline = [sort([templine(1) templine(2)]) templine(3:5)];
+        sortfindrel = [sortfindrel; newline];
+    end
+findrel = sortrows(sortfindrel,1)
+pstart = findrel(:,1);
+p2n = findrel(:,2);
+p1n = cellfun(@str2num,pstart);
+p2n = cellfun(@str2num,p2n);
+rel = findrel(:,3);
+tempfr = [p1n p2n];
+tempfr = sort(tempfr,2);
+p1n = tempfr(:,1);
+p2n = tempfr(:,2);
+p1 = code2p(pcodes(p1n));
+p2 = code2p(pcodes(p2n));
+findrel = table(p1n, p2n, rel, p1, p2);
+findrel = sortrows(findrel,1);
 end
