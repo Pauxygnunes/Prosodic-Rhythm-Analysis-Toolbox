@@ -21,15 +21,15 @@ The overall structure of the toolbox is composed of seven modules (Figure 2):
 6. **Tables** - comprised of the tables "profiles.mat" and "reltab.mat". For the sake of simplicity, these two files are provided already rendered with the toolbox. This permits the function "perflab" to work out of the box.
 7. **Graphs** - the script "perflab" is a showcase for generating graphs of subsets of the rhythmesh, using criteria extracted from the files "profiles.mat" and "reltab.mat". There are some preset suggestions, but the user can elaborate on any query that he wants.
 
-|![PRA structure](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/6e392dd3-a684-47dd-8a6a-986d15f81645)|
+!<img width="699" alt="PRA Toolbox Structure" src="https://github.com/user-attachments/assets/88d2639f-1796-46b6-9400-3fd1a0d72078" />|
 |:--:| 
 | *Figure 2 - Overall structure of PRA Toolbox.* |
 
 The resulting graphs show some substructures and relations that can be explored in musical analysis of musical composition (Figures 3, 4, and 5).
 
-|![RP operations](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/fdca217a-1643-413c-96ed-714d58bf02d9)|
+![Profrelations](https://github.com/user-attachments/assets/da290240-475d-4fdd-9b1c-9c1b71bcfd75)|
 |:--:| 
-| *Figure 3 - Three examples of distribution of the 296 rhythmic profiles of rhythmesh into clusters based on two relations – prefixation (a) and prolation (b) – and the operation of rotation (c). Each rhythmic profile is represented by a point in the cluster.* |
+| *Figure 3 - Three examples of distribution of the 296 rhythmic profiles of rhythmesh into clusters based on relations of prefixation (a), prolation (b), and rotation (c). Each rhythmic profile is represented by a point in the cluster.* |
 
 |![BoiPreto_exemplo com árvores_v02](https://github.com/Pauxygnunes/Prosodic-Rhythm-Analysis-Toolbox/assets/30673056/633dfc7b-269a-4549-8165-84b57bd7ebfb)|
 |:--:| 
