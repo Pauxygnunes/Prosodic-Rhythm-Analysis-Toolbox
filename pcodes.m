@@ -17,8 +17,8 @@ function pcodes = pcodes(n)
 % 
 % Created in July 2023 under MATLAB 2022 (Mac OS)
 %
-% © Part of Prosodic Rhythms Analysis Toolbox - PRA Toolbox,
-% Copyright © 2023, Pauxy Gentil Nunes Filho, Filipe de Matos Rocha
+% ï¿½ Part of Prosodic Rhythms Analysis Toolbox - PRA Toolbox,
+% Copyright ï¿½ 2023, Pauxy Gentil Nunes Filho, Filipe de Matos Rocha
 % PArtiMus, and MusMat Research Groups - PPGM-UFRJ
 % See License.txt
 % ==========
