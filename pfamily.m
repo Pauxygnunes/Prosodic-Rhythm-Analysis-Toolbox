@@ -26,7 +26,7 @@ if size(pcode,2) < 4
     pcode = p2code(pcode);
 end
 pfamily = {};
-profs = profiles(pcode);
+profs = code2p(pcode);
     for f = 1:size(pcode,1)
         tempcode = profs{f};
         card = size(tempcode,2);
