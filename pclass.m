@@ -20,12 +20,17 @@ function pclass = pclass(pcode)
 % Copyright © 2023, Pauxy Gentil Nunes Filho, Filipe de Matos Rocha
 % PArtiMus, and MusMat Research Groups - PPGM-UFRJ
 % See License.txt
-% ==========
+% Created in November 2024 under MATLAB 2023 (Mac OS)
+% Part of Prosodic Rhythms Analysis Toolbox - PRA Toolbox,
+% Copyright © 2023, Pauxy Gentil Nunes Filho, Filipe de Matos Rocha
+% PArtiMus, and MusMat Research Groups - PPGM-UFRJ
+% See License.txt
+% ========== Conversion of profile of pcode
 if size(pcode,2) < 4
     pcode = p2code(pcode);
 end
-pclass = {};
-profs = profiles(pcode);
+ppattern = {};
+profs = code2p(pcode);
     for f = 1:size(pcode,1)
         tempcode = profs{f};
         for g = 1:size(tempcode,2)
@@ -35,8 +40,8 @@ profs = profiles(pcode);
                 tempclass(g) = 'n';
             end
         end
-        pclass{f} = tempclass;
+        ppattern{f} = tempclass;
         tempclass = '';
     end
-pclass = pclass';
+pclass = ppattern';
 end
