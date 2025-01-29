@@ -25,7 +25,7 @@ if size(pcode,2) < 4
     pcode = p2code(pcode);
 end
 pstrata = [];
-perfs = profiles(pcode);
+perfs = code2p(pcode);
     for f = 1:size(pcode,1)
         tempcode = perfs{f};
         numletters = numel(find(isletter(tempcode)));
@@ -43,11 +43,11 @@ perfs = profiles(pcode);
             case 3
                 switch numletters
                     case 0
-                        strata = 3;
+                        strata = 2;
                     case 1
-                        strata = 4;
+                        strata = 3;
                     case 2
-                        strata = 5;
+                        strata = 4;
                 end
         end
         pstrata(f) = strata;
