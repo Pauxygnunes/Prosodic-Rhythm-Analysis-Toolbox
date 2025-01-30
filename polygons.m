@@ -19,6 +19,8 @@ function polygons = polygons(prof, vertices, indline)
 % Copyright © 2023, Pauxy Gentil Nunes Filho, Filipe de Matos Rocha
 % PArtiMus, and MusMat Research Groups - PPGM-UFRJ
 % See License.txt
+% .......... Open chronometer
+tic
 % ---------- Disable warnings
 warning('off','all')
 % .......... Clear global variables
@@ -88,6 +90,8 @@ F.fw = uicontrol('style','push',...
                  'callback',{@fw_call,F});
 % .......... Do the calculus
 polyprlab(prof, vertices, tabinds)
+% .......... close chronometer
+toc
 end
 % *******************************************************
 function polyprlab = polyprlab(prof, vertices, tabinds)
@@ -219,8 +223,7 @@ for f = 1:size(combs,1)
         end
     end
 end
-list(findupl(list),:) = [];
-nbfilter = list;
+nbfilter = deldupl(list);
 end
 % *******************************************************
 function tlist = tlist(G, list)
@@ -235,18 +238,11 @@ tlist = [];
     end
 end
 %  *******************************************************
-function findupl = findupl(list)
+function deldupl = deldupl(list)
 doomed = [];
-    for f = 1:size(list,1)-1
-        templine1 = list(f,:);
-        for g = f+1:size(list,1)
-            templine2 = list(g,:);
-            if sort(templine1)==sort(templine2)
-                doomed = [doomed; f];
-            end
-        end
-    end
-    findupl = doomed;
+slist = sort(list,2);
+[~,b,~] = unique(slist, 'rows');
+deldupl = list(b,:);
 end
 % *******************************************************
 function pb_call(varargin)
