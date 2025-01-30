@@ -1,4 +1,4 @@
-function polygons = polygons(prof, vertices, indline)
+function polygons(prof, vertices, indline)
 % The polygons function explores geometric forms within the rhythmesh.
 % Relationships between profiles form cycles of 3, 4, or more edges, which
 % can be analyzed and used to design compositional structures. Given a
@@ -9,7 +9,7 @@ function polygons = polygons(prof, vertices, indline)
 % cycle through all possible polygons.
 % 
 % Usage:
-%   polygons(profile name, number of edges)
+%   polygons(profile name, number of edges, id of polygon)
 % 
 % Example:
 %   polygons('tb1', 3, 3)
@@ -23,18 +23,10 @@ function polygons = polygons(prof, vertices, indline)
 tic
 % ---------- Disable warnings
 warning('off','all')
-% .......... Clear global variables
-clear global prof
-clear global vertices
-clear global list
-clear global tabinds
 % ---------- Importing variables
-global prof
-global vertices
 load('profdata.mat', 'profdata');
 load('reldata.mat', 'reldata');
 % ---------- Extracton of variables and vectors
-card = profdata.fcardTH; % cardinalities
 names = profdata.prof; % profile names
 estratos = profdata.stratum; % strata
 familias = profdata.family; % families
@@ -48,7 +40,7 @@ weights = ones(1,size(t,1))'; % weights flattened to one
 G = graph(s,t, weights, names);
 % ========== Create the graph structure
 p = porder(prof);
-mustBeInRange(vertices,2,5);
+mustBeInRange(vertices,2,6);
 % ---------- Choose and draw the polygon
     for f = 1:vertices-1
         tl = tlist(G, p);
@@ -57,78 +49,15 @@ mustBeInRange(vertices,2,5);
 tl = nbfilter(tlist(G, tl));
 tlp = code2p(pcodes(tl));
 list = reshape (tlp, [size(tl,1), size(tl,2)]);
-global list
 tabinds = (1:size(list, 1));
 tabinds = circshift(tabinds, -(indline-1));
-global tabinds
-global indline
-F.f = figure (1);
-% .......... Buttons
-F.rw = uicontrol('style','push',...
-                 'units','pix',...
-                 'position',[10 10 60 30],...
-                 'fontsize',12,...
-                 'string','10<<',...
-                 'callback',{@rw_call,F});
-F.bk = uicontrol('style','push',...
-                 'units','pix',...
-                 'position',[70 10 60 30],...
-                 'fontsize',12,...
-                 'string','1<',...
-                 'callback',{@bk_call,F});
-F.pb = uicontrol('style','push',...
-                 'units','pix',...
-                 'position',[130 10 60 30],...
-                 'fontsize',12,...
-                 'string','>1',...
-                 'callback',{@pb_call,F});
-F.fw = uicontrol('style','push',...
-                 'units','pix',...
-                 'position',[190 10 60 30],...
-                 'fontsize',12,...
-                 'string','>>10',...
-                 'callback',{@fw_call,F});
 % .......... Do the calculus
-polyprlab(prof, vertices, tabinds)
+plotH(G, list, tabinds, prof, reldata)
 % .......... close chronometer
 toc
 end
 % *******************************************************
-function polyprlab = polyprlab(prof, vertices, tabinds)
-% ========== 2. Importing variables
-global prof
-global vertices
-global list
-global tabinds
-global indline
-load('profdata.mat','profdata');
-load('reldata.mat','reldata');
-% ========== 3. Extracton of variables and vectors
-card = profdata.fcardTH; % cardinalities
-names = profdata.prof; % profile names
-estratos = profdata.stratum; % strata
-familias = profdata.family; % families
-niveis = profdata.level; % levels
-s = reldata.p1n; % porder of start profiles
-t = reldata.p2n; % porder of target profiles
-rels = reldata.rel; % relations between s and t profiles.
-vetores = profdata.vector; % vetores
-weights = ones(1,size(t,1))'; % weights flattened to one
-% .......... Graph data rendering (disabled)
-G = graph(s, t, weights, names);
-% .......... Load options for subgraphs
-%refprofs = perfs;
-%originals = find(ismember(perfs, refprofs));
-%news = find(~ismember(perfs, refprofs));
-% .......... Choose and draw the polygon
-p = porder(prof);
-    for f = 1:vertices-1
-        tl = tlist(G, p);
-        p = tl;
-    end
-tl = nbfilter(tlist(G, tl));
-tlp = code2p(pcodes(tl));
-list = reshape (tlp, [size(tl,1), size(tl,2)]);
+function plotH = plotH(G, list, tabinds, prof, reldata)
 % .......... Subgraph data rendering
 profs = unique(porder(list(tabinds(1),:)'));
 H = subgraph(G, profs);
@@ -160,6 +89,32 @@ colors = [  .24 .45 .72;...
             .16 .69 .36;...
             .79 .38 0;...
             0 0 0];
+F.f = figure (1);
+% .......... Buttons
+F.rw = uicontrol('style','push',...
+                 'units','pix',...
+                 'position',[10 10 60 30],...
+                 'fontsize',12,...
+                 'string','10<<',...
+                 'callback',{@rw_call,F, G, list, tabinds, prof, reldata});
+F.bk = uicontrol('style','push',...
+                 'units','pix',...
+                 'position',[70 10 60 30],...
+                 'fontsize',12,...
+                 'string','1<',...
+                 'callback',{@bk_call,F, G, list, tabinds, prof, reldata});
+F.pb = uicontrol('style','push',...
+                 'units','pix',...
+                 'position',[130 10 60 30],...
+                 'fontsize',12,...
+                 'string','>1',...
+                 'callback',{@pb_call,F, G, list, tabinds, prof, reldata});
+F.fw = uicontrol('style','push',...
+                 'units','pix',...
+                 'position',[190 10 60 30],...
+                 'fontsize',12,...
+                 'string','>>10',...
+                 'callback',{@fw_call,F, G, list, tabinds, prof, reldata});
 % .......... Layout force
 GH = plot(H,...
             'EdgeColor', colors(indsty,:),...
@@ -174,7 +129,10 @@ axis equal
 ind = size(list,2)-1;
     if ind > 0
         indforma = ind-2;
-        formas = {'Triangle', 'Quadrilateral', 'Pentagon'};
+        formas = {  'Triangle',...
+                    'Quadrilateral',...
+                    'Pentagon',...
+                    'Hexagon'};
         forma = formas{indforma};
     else
         forma = ' ';
@@ -187,7 +145,6 @@ title ([forma ' with profile (' prof '): ' indline '/',...
 highlight(GH,prof, 'Marker', 'o',...
                         'NodeColor','k',...
                         'Markersize', 8)
-polyprlab = G;
 end
 % *******************************************************
 function c = cores (tab)
@@ -245,37 +202,45 @@ deldupl = list(b,:);
 end
 % *******************************************************
 function pb_call(varargin)
-global prof
-global vertices
-global tabinds
 F = varargin{3};  % Get the structure.
+G = varargin{4};
+list = varargin{5};
+tabinds = varargin{6};
+prof = varargin{7};
+reldata = varargin{8};
 tabinds = circshift(tabinds, -1);
-polyprlab(prof, vertices);
+plotH(G, list, tabinds, prof, reldata);
 end
 % *******************************************************
 function bk_call(varargin)
-global prof
-global vertices
-global tabinds
 F = varargin{3};  % Get the structure.
+G = varargin{4};
+list = varargin{5};
+tabinds = varargin{6};
+prof = varargin{7};
+reldata = varargin{8};
 tabinds = circshift(tabinds, 1);
-polyprlab(prof, vertices);
+plotH(G, list, tabinds, prof, reldata);
 end
 % *******************************************************
 function rw_call(varargin)
-global prof
-global vertices
-global tabinds
 F = varargin{3};  % Get the structure.
+G = varargin{4};
+list = varargin{5};
+tabinds = varargin{6};
+prof = varargin{7};
+reldata = varargin{8};
 tabinds = circshift(tabinds, 10);
-polyprlab(prof, vertices);
+plotH(G, list, tabinds, prof, reldata);
 end
 % *******************************************************
 function fw_call(varargin)
-global prof
-global vertices
-global tabinds
 F = varargin{3};  % Get the structure.
+G = varargin{4};
+list = varargin{5};
+tabinds = varargin{6};
+prof = varargin{7};
+reldata = varargin{8};
 tabinds = circshift(tabinds, -10);
-polyprlab(prof, vertices);
+plotH(G, list, tabinds, prof, reldata);
 end
