@@ -12,7 +12,7 @@ function polygons = polygons(prof, vertices, indline)
 %   polygons(profile name, number of edges)
 % 
 % Example:
-%   polygons('tb1', 3)
+%   polygons('tb1', 3, 3)
 % 
 % Created in November 2024 under MATLAB 2023 (Mac OS)
 % © Part of Prosodic Rhythms Analysis Toolbox - PRA Toolbox,
@@ -232,9 +232,8 @@ tlist = [];
         templine = list(f,:);
         perfilativo = templine(end);
         nb = neighbors(G, perfilativo);
-        for g = 1:size(nb,1)
-            tlist = [tlist; templine nb(g)];
-        end
+        tempcol = repmat(templine, size(nb,1), 1);
+        tlist = [tlist; tempcol nb];
     end
 end
 %  *******************************************************
